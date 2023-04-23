@@ -1,0 +1,160 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-avg-stat-heading" data-cy="AvgStatCreateUpdateHeading" jhiTranslate="tennisApp.avgStat.home.createOrEditLabel">
+        Create or edit a Avg Stat
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="tennisApp.avgStat.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.avgStat.avgAces" for="field_avgAces">Avg Aces</label>
+          <input type="number" class="form-control" name="avgAces" id="field_avgAces" data-cy="avgAces" formControlName="avgAces" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.avgStat.avgDoubleFaults" for="field_avgDoubleFaults">Avg Double Faults</label>
+          <input
+            type="number"
+            class="form-control"
+            name="avgDoubleFaults"
+            id="field_avgDoubleFaults"
+            data-cy="avgDoubleFaults"
+            formControlName="avgDoubleFaults"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.avgStat.avgServicePoints" for="field_avgServicePoints"
+            >Avg Service Points</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="avgServicePoints"
+            id="field_avgServicePoints"
+            data-cy="avgServicePoints"
+            formControlName="avgServicePoints"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.avgStat.avgFirstServeIn" for="field_avgFirstServeIn">Avg First Serve In</label>
+          <input
+            type="number"
+            class="form-control"
+            name="avgFirstServeIn"
+            id="field_avgFirstServeIn"
+            data-cy="avgFirstServeIn"
+            formControlName="avgFirstServeIn"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.avgStat.avgFirstServeWon" for="field_avgFirstServeWon"
+            >Avg First Serve Won</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="avgFirstServeWon"
+            id="field_avgFirstServeWon"
+            data-cy="avgFirstServeWon"
+            formControlName="avgFirstServeWon"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.avgStat.avgSecondServeWon" for="field_avgSecondServeWon"
+            >Avg Second Serve Won</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="avgSecondServeWon"
+            id="field_avgSecondServeWon"
+            data-cy="avgSecondServeWon"
+            formControlName="avgSecondServeWon"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.avgStat.avgServiceGames" for="field_avgServiceGames">Avg Service Games</label>
+          <input
+            type="number"
+            class="form-control"
+            name="avgServiceGames"
+            id="field_avgServiceGames"
+            data-cy="avgServiceGames"
+            formControlName="avgServiceGames"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.avgStat.avgSavedBreakPoints" for="field_avgSavedBreakPoints"
+            >Avg Saved Break Points</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="avgSavedBreakPoints"
+            id="field_avgSavedBreakPoints"
+            data-cy="avgSavedBreakPoints"
+            formControlName="avgSavedBreakPoints"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.avgStat.avgFacedBreakPoints" for="field_avgFacedBreakPoints"
+            >Avg Faced Break Points</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="avgFacedBreakPoints"
+            id="field_avgFacedBreakPoints"
+            data-cy="avgFacedBreakPoints"
+            formControlName="avgFacedBreakPoints"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.avgStat.player" for="field_player">Player</label>
+          <select
+            class="form-control"
+            id="field_player"
+            data-cy="player"
+            name="player"
+            formControlName="player"
+            [compareWith]="comparePlayer"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="playerOption" *ngFor="let playerOption of playersCollection">{{ playerOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

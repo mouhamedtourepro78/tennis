@@ -1,0 +1,66 @@
+{
+  "applications": "*",
+  "changelogDate": "20230423132233",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "player",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hand",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "height",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nationality",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "age",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Player",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "avgStat",
+      "otherEntityRelationshipName": "player",
+      "ownerSide": false,
+      "relationshipName": "avgStats",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "match",
+      "otherEntityRelationshipName": "winner",
+      "relationshipName": "wonMatchs",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "match",
+      "otherEntityRelationshipName": "loser",
+      "relationshipName": "lostMatchs",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "stat",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "stats",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

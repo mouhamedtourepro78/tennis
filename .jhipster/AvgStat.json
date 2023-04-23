@@ -1,0 +1,64 @@
+{
+  "applications": "*",
+  "changelogDate": "20230423132236",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "avg_stat",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "avgAces",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "avgDoubleFaults",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "avgServicePoints",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "avgFirstServeIn",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "avgFirstServeWon",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "avgSecondServeWon",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "avgServiceGames",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "avgSavedBreakPoints",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "avgFacedBreakPoints",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AvgStat",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "player",
+      "otherEntityRelationshipName": "avgStats",
+      "ownerSide": true,
+      "relationshipName": "player",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

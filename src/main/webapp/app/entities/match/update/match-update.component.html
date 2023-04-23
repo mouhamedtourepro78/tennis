@@ -1,0 +1,113 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-match-heading" data-cy="MatchCreateUpdateHeading" jhiTranslate="tennisApp.match.home.createOrEditLabel">
+        Create or edit a Match
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="tennisApp.match.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.matchNumber" for="field_matchNumber">Match Number</label>
+          <input
+            type="number"
+            class="form-control"
+            name="matchNumber"
+            id="field_matchNumber"
+            data-cy="matchNumber"
+            formControlName="matchNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.score" for="field_score">Score</label>
+          <input type="text" class="form-control" name="score" id="field_score" data-cy="score" formControlName="score" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.bestOf" for="field_bestOf">Best Of</label>
+          <input type="number" class="form-control" name="bestOf" id="field_bestOf" data-cy="bestOf" formControlName="bestOf" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.matchRound" for="field_matchRound">Match Round</label>
+          <input
+            type="text"
+            class="form-control"
+            name="matchRound"
+            id="field_matchRound"
+            data-cy="matchRound"
+            formControlName="matchRound"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.minutes" for="field_minutes">Minutes</label>
+          <input type="number" class="form-control" name="minutes" id="field_minutes" data-cy="minutes" formControlName="minutes" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.winner" for="field_winner">Winner</label>
+          <select
+            class="form-control"
+            id="field_winner"
+            data-cy="winner"
+            name="winner"
+            formControlName="winner"
+            [compareWith]="comparePlayer"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="playerOption" *ngFor="let playerOption of playersSharedCollection">{{ playerOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.loser" for="field_loser">Loser</label>
+          <select class="form-control" id="field_loser" data-cy="loser" name="loser" formControlName="loser" [compareWith]="comparePlayer">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="playerOption" *ngFor="let playerOption of playersSharedCollection">{{ playerOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.match.tournament" for="field_tournament">Tournament</label>
+          <select
+            class="form-control"
+            id="field_tournament"
+            data-cy="tournament"
+            name="tournament"
+            formControlName="tournament"
+            [compareWith]="compareTournament"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="tournamentOption" *ngFor="let tournamentOption of tournamentsSharedCollection">
+              {{ tournamentOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,157 @@
+<div>
+  <h2 id="page-heading" data-cy="MatchHeading">
+    <span jhiTranslate="tennisApp.match.home.title">Matches</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tennisApp.match.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-match"
+        [routerLink]="['/match/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tennisApp.match.home.createLabel"> Create a new Match </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="matches?.length === 0">
+    <span jhiTranslate="tennisApp.match.home.notFound">No Matches found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="matches && matches.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="tennisApp.match.id">Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="matchNumber">
+            <div class="d-flex">
+              <span jhiTranslate="tennisApp.match.matchNumber">Match Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="score">
+            <div class="d-flex">
+              <span jhiTranslate="tennisApp.match.score">Score</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="bestOf">
+            <div class="d-flex">
+              <span jhiTranslate="tennisApp.match.bestOf">Best Of</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="matchRound">
+            <div class="d-flex">
+              <span jhiTranslate="tennisApp.match.matchRound">Match Round</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="minutes">
+            <div class="d-flex">
+              <span jhiTranslate="tennisApp.match.minutes">Minutes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="winner.id">
+            <div class="d-flex">
+              <span jhiTranslate="tennisApp.match.winner">Winner</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="loser.id">
+            <div class="d-flex">
+              <span jhiTranslate="tennisApp.match.loser">Loser</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tournament.id">
+            <div class="d-flex">
+              <span jhiTranslate="tennisApp.match.tournament">Tournament</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let match of matches; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/match', match.id, 'view']">{{ match.id }}</a>
+          </td>
+          <td>{{ match.matchNumber }}</td>
+          <td>{{ match.score }}</td>
+          <td>{{ match.bestOf }}</td>
+          <td>{{ match.matchRound }}</td>
+          <td>{{ match.minutes }}</td>
+          <td>
+            <div *ngIf="match.winner">
+              <a [routerLink]="['/player', match.winner.id, 'view']">{{ match.winner.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="match.loser">
+              <a [routerLink]="['/player', match.loser.id, 'view']">{{ match.loser.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="match.tournament">
+              <a [routerLink]="['/tournament', match.tournament.id, 'view']">{{ match.tournament.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/match', match.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/match', match.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(match)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="matches && matches.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

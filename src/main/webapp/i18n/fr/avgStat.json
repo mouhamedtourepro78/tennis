@@ -1,0 +1,33 @@
+{
+  "tennisApp": {
+    "avgStat": {
+      "home": {
+        "title": "AvgStats",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Avg Stat",
+        "createOrEditLabel": "Créer ou éditer un Avg Stat",
+        "notFound": "Aucun Avg Stat trouvé"
+      },
+      "created": "Un nouveau Avg Stat a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Avg Stat avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Avg Stat avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Avg Stat {{ id }} ?"
+      },
+      "detail": {
+        "title": "Avg Stat"
+      },
+      "id": "Id",
+      "avgAces": "Avg Aces",
+      "avgDoubleFaults": "Avg Double Faults",
+      "avgServicePoints": "Avg Service Points",
+      "avgFirstServeIn": "Avg First Serve In",
+      "avgFirstServeWon": "Avg First Serve Won",
+      "avgSecondServeWon": "Avg Second Serve Won",
+      "avgServiceGames": "Avg Service Games",
+      "avgSavedBreakPoints": "Avg Saved Break Points",
+      "avgFacedBreakPoints": "Avg Faced Break Points",
+      "player": "Player"
+    }
+  }
+}

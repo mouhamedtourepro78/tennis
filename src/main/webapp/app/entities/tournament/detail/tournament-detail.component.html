@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tournament">
+      <h2 data-cy="tournamentDetailsHeading"><span jhiTranslate="tennisApp.tournament.detail.title">Tournament</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="tennisApp.tournament.id">Id</span></dt>
+        <dd>
+          <span>{{ tournament.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.tournament.name">Name</span></dt>
+        <dd>
+          <span>{{ tournament.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.tournament.surface">Surface</span></dt>
+        <dd>
+          <span>{{ tournament.surface }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.tournament.drawSize">Draw Size</span></dt>
+        <dd>
+          <span>{{ tournament.drawSize }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.tournament.level">Level</span></dt>
+        <dd>
+          <span>{{ tournament.level }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.tournament.date">Date</span></dt>
+        <dd>
+          <span>{{ tournament.date | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tournament', tournament.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

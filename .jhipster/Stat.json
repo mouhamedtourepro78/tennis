@@ -1,0 +1,63 @@
+{
+  "applications": "*",
+  "changelogDate": "20230423132232",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "stat",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "aces",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "doubleFaults",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "servicePoints",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "firstServeIn",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "firstServeWon",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "secondServeWon",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "serviceGames",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "savedBreakPoints",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "facedBreakPoints",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Stat",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "player",
+      "otherEntityRelationshipName": "stats",
+      "relationshipName": "player",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

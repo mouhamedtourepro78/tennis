@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="match">
+      <h2 data-cy="matchDetailsHeading"><span jhiTranslate="tennisApp.match.detail.title">Match</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="tennisApp.match.id">Id</span></dt>
+        <dd>
+          <span>{{ match.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.matchNumber">Match Number</span></dt>
+        <dd>
+          <span>{{ match.matchNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.score">Score</span></dt>
+        <dd>
+          <span>{{ match.score }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.bestOf">Best Of</span></dt>
+        <dd>
+          <span>{{ match.bestOf }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.matchRound">Match Round</span></dt>
+        <dd>
+          <span>{{ match.matchRound }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.minutes">Minutes</span></dt>
+        <dd>
+          <span>{{ match.minutes }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.winner">Winner</span></dt>
+        <dd>
+          <div *ngIf="match.winner">
+            <a [routerLink]="['/player', match.winner.id, 'view']">{{ match.winner.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.loser">Loser</span></dt>
+        <dd>
+          <div *ngIf="match.loser">
+            <a [routerLink]="['/player', match.loser.id, 'view']">{{ match.loser.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.match.tournament">Tournament</span></dt>
+        <dd>
+          <div *ngIf="match.tournament">
+            <a [routerLink]="['/tournament', match.tournament.id, 'view']">{{ match.tournament.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/match', match.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

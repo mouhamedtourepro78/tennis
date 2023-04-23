@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="stat">
+      <h2 data-cy="statDetailsHeading"><span jhiTranslate="tennisApp.stat.detail.title">Stat</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="tennisApp.stat.id">Id</span></dt>
+        <dd>
+          <span>{{ stat.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.stat.aces">Aces</span></dt>
+        <dd>
+          <span>{{ stat.aces }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.stat.doubleFaults">Double Faults</span></dt>
+        <dd>
+          <span>{{ stat.doubleFaults }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.stat.servicePoints">Service Points</span></dt>
+        <dd>
+          <span>{{ stat.servicePoints }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.stat.firstServeIn">First Serve In</span></dt>
+        <dd>
+          <span>{{ stat.firstServeIn }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.stat.firstServeWon">First Serve Won</span></dt>
+        <dd>
+          <span>{{ stat.firstServeWon }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.stat.secondServeWon">Second Serve Won</span></dt>
+        <dd>
+          <span>{{ stat.secondServeWon }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.stat.serviceGames">Service Games</span></dt>
+        <dd>
+          <span>{{ stat.serviceGames }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.stat.savedBreakPoints">Saved Break Points</span></dt>
+        <dd>
+          <span>{{ stat.savedBreakPoints }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.stat.facedBreakPoints">Faced Break Points</span></dt>
+        <dd>
+          <span>{{ stat.facedBreakPoints }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.stat.player">Player</span></dt>
+        <dd>
+          <div *ngIf="stat.player">
+            <a [routerLink]="['/player', stat.player.id, 'view']">{{ stat.player.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/stat', stat.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+{
+  "applications": "*",
+  "changelogDate": "20230423132235",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "tournament",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "surface",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "drawSize",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "level",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Tournament",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "match",
+      "otherEntityRelationshipName": "tournament",
+      "relationshipName": "matchs",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

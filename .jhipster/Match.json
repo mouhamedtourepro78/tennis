@@ -1,0 +1,59 @@
+{
+  "applications": "*",
+  "changelogDate": "20230423132234",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "match",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "matchNumber",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "score",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bestOf",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "matchRound",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "minutes",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Match",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "player",
+      "otherEntityRelationshipName": "wonMatchs",
+      "relationshipName": "winner",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "player",
+      "otherEntityRelationshipName": "lostMatchs",
+      "relationshipName": "loser",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "tournament",
+      "otherEntityRelationshipName": "matchs",
+      "relationshipName": "tournament",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

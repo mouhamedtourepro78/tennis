@@ -50,6 +50,15 @@ public class CacheConfiguration {
             createCache(cm, com.tennis.app.domain.User.class.getName() + ".authorities");
             createCache(cm, com.tennis.app.domain.PersistentToken.class.getName());
             createCache(cm, com.tennis.app.domain.User.class.getName() + ".persistentTokens");
+            createCache(cm, com.tennis.app.domain.Stat.class.getName());
+            createCache(cm, com.tennis.app.domain.Player.class.getName());
+            createCache(cm, com.tennis.app.domain.Player.class.getName() + ".wonMatchs");
+            createCache(cm, com.tennis.app.domain.Player.class.getName() + ".lostMatchs");
+            createCache(cm, com.tennis.app.domain.Player.class.getName() + ".stats");
+            createCache(cm, com.tennis.app.domain.Match.class.getName());
+            createCache(cm, com.tennis.app.domain.Tournament.class.getName());
+            createCache(cm, com.tennis.app.domain.Tournament.class.getName() + ".matchs");
+            createCache(cm, com.tennis.app.domain.AvgStat.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

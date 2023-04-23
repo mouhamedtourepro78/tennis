@@ -1,0 +1,29 @@
+{
+  "tennisApp": {
+    "tournament": {
+      "home": {
+        "title": "Tournaments",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Tournament",
+        "createOrEditLabel": "Créer ou éditer un Tournament",
+        "notFound": "Aucun Tournament trouvé"
+      },
+      "created": "Un nouveau Tournament a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Tournament avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Tournament avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Tournament {{ id }} ?"
+      },
+      "detail": {
+        "title": "Tournament"
+      },
+      "id": "Id",
+      "name": "Name",
+      "surface": "Surface",
+      "drawSize": "Draw Size",
+      "level": "Level",
+      "date": "Date",
+      "matchs": "Matchs"
+    }
+  }
+}

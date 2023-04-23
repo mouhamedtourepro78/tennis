@@ -1,0 +1,74 @@
+entity Stat {
+	id Long,
+    aces Long,
+    doubleFaults Long,
+    servicePoints Long,
+    firstServeIn Long,
+    firstServeWon Long,
+    secondServeWon Long,
+    serviceGames Long,
+    savedBreakPoints Long,
+    facedBreakPoints Long
+}
+
+entity Player {
+	id Long,
+    name String,
+    hand String,
+    height Long,
+    nationality String,
+    age Double
+}
+
+entity Match {
+	id Long,
+    matchNumber Long,
+    score String,
+    bestOf Integer,
+    matchRound String,
+    minutes Long
+}
+entity Tournament {
+	id Long,
+    name String,
+    surface String,
+    drawSize Integer,
+    level String,
+    date LocalDate
+
+}
+entity AvgStat {
+	id Long,
+    avgAces Long,
+    avgDoubleFaults Long,
+    avgServicePoints Long,
+    avgFirstServeIn Long,
+    avgFirstServeWon Long,
+    avgSecondServeWon Long,
+    avgServiceGames Long,
+    avgSavedBreakPoints Long,
+    avgFacedBreakPoints Long
+}
+
+relationship ManyToOne {
+
+	Match{winner} to Player{wonMatchs}
+}
+relationship ManyToOne {
+
+	Match{loser} to Player{lostMatchs}
+}
+
+relationship ManyToOne {
+	Stat{player} to Player{stats}
+}
+relationship ManyToOne{
+	Match{tournament} to Tournament{matchs}
+}
+relationship OneToOne {
+	AvgStat{player} to Player{avgStats}
+}
+
+paginate Player, Stat, Match, AvgStat with pagination
+
+service all with serviceImpl

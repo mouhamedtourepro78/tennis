@@ -1,0 +1,32 @@
+{
+  "tennisApp": {
+    "player": {
+      "home": {
+        "title": "Players",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Player",
+        "createOrEditLabel": "Créer ou éditer un Player",
+        "notFound": "Aucun Player trouvé"
+      },
+      "created": "Un nouveau Player a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Player avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Player avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Player {{ id }} ?"
+      },
+      "detail": {
+        "title": "Player"
+      },
+      "id": "Id",
+      "name": "Name",
+      "hand": "Hand",
+      "height": "Height",
+      "nationality": "Nationality",
+      "age": "Age",
+      "avgStats": "Avg Stats",
+      "wonMatchs": "Won Matchs",
+      "lostMatchs": "Lost Matchs",
+      "stats": "Stats"
+    }
+  }
+}

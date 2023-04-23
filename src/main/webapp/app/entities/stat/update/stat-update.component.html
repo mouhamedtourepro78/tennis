@@ -1,0 +1,150 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-stat-heading" data-cy="StatCreateUpdateHeading" jhiTranslate="tennisApp.stat.home.createOrEditLabel">
+        Create or edit a Stat
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="tennisApp.stat.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.stat.aces" for="field_aces">Aces</label>
+          <input type="number" class="form-control" name="aces" id="field_aces" data-cy="aces" formControlName="aces" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.stat.doubleFaults" for="field_doubleFaults">Double Faults</label>
+          <input
+            type="number"
+            class="form-control"
+            name="doubleFaults"
+            id="field_doubleFaults"
+            data-cy="doubleFaults"
+            formControlName="doubleFaults"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.stat.servicePoints" for="field_servicePoints">Service Points</label>
+          <input
+            type="number"
+            class="form-control"
+            name="servicePoints"
+            id="field_servicePoints"
+            data-cy="servicePoints"
+            formControlName="servicePoints"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.stat.firstServeIn" for="field_firstServeIn">First Serve In</label>
+          <input
+            type="number"
+            class="form-control"
+            name="firstServeIn"
+            id="field_firstServeIn"
+            data-cy="firstServeIn"
+            formControlName="firstServeIn"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.stat.firstServeWon" for="field_firstServeWon">First Serve Won</label>
+          <input
+            type="number"
+            class="form-control"
+            name="firstServeWon"
+            id="field_firstServeWon"
+            data-cy="firstServeWon"
+            formControlName="firstServeWon"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.stat.secondServeWon" for="field_secondServeWon">Second Serve Won</label>
+          <input
+            type="number"
+            class="form-control"
+            name="secondServeWon"
+            id="field_secondServeWon"
+            data-cy="secondServeWon"
+            formControlName="secondServeWon"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.stat.serviceGames" for="field_serviceGames">Service Games</label>
+          <input
+            type="number"
+            class="form-control"
+            name="serviceGames"
+            id="field_serviceGames"
+            data-cy="serviceGames"
+            formControlName="serviceGames"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.stat.savedBreakPoints" for="field_savedBreakPoints">Saved Break Points</label>
+          <input
+            type="number"
+            class="form-control"
+            name="savedBreakPoints"
+            id="field_savedBreakPoints"
+            data-cy="savedBreakPoints"
+            formControlName="savedBreakPoints"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.stat.facedBreakPoints" for="field_facedBreakPoints">Faced Break Points</label>
+          <input
+            type="number"
+            class="form-control"
+            name="facedBreakPoints"
+            id="field_facedBreakPoints"
+            data-cy="facedBreakPoints"
+            formControlName="facedBreakPoints"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="tennisApp.stat.player" for="field_player">Player</label>
+          <select
+            class="form-control"
+            id="field_player"
+            data-cy="player"
+            name="player"
+            formControlName="player"
+            [compareWith]="comparePlayer"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="playerOption" *ngFor="let playerOption of playersSharedCollection">{{ playerOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

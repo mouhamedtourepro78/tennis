@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="avgStat">
+      <h2 data-cy="avgStatDetailsHeading"><span jhiTranslate="tennisApp.avgStat.detail.title">Avg Stat</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="tennisApp.avgStat.id">Id</span></dt>
+        <dd>
+          <span>{{ avgStat.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.avgStat.avgAces">Avg Aces</span></dt>
+        <dd>
+          <span>{{ avgStat.avgAces }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.avgStat.avgDoubleFaults">Avg Double Faults</span></dt>
+        <dd>
+          <span>{{ avgStat.avgDoubleFaults }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.avgStat.avgServicePoints">Avg Service Points</span></dt>
+        <dd>
+          <span>{{ avgStat.avgServicePoints }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.avgStat.avgFirstServeIn">Avg First Serve In</span></dt>
+        <dd>
+          <span>{{ avgStat.avgFirstServeIn }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.avgStat.avgFirstServeWon">Avg First Serve Won</span></dt>
+        <dd>
+          <span>{{ avgStat.avgFirstServeWon }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.avgStat.avgSecondServeWon">Avg Second Serve Won</span></dt>
+        <dd>
+          <span>{{ avgStat.avgSecondServeWon }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.avgStat.avgServiceGames">Avg Service Games</span></dt>
+        <dd>
+          <span>{{ avgStat.avgServiceGames }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.avgStat.avgSavedBreakPoints">Avg Saved Break Points</span></dt>
+        <dd>
+          <span>{{ avgStat.avgSavedBreakPoints }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.avgStat.avgFacedBreakPoints">Avg Faced Break Points</span></dt>
+        <dd>
+          <span>{{ avgStat.avgFacedBreakPoints }}</span>
+        </dd>
+        <dt><span jhiTranslate="tennisApp.avgStat.player">Player</span></dt>
+        <dd>
+          <div *ngIf="avgStat.player">
+            <a [routerLink]="['/player', avgStat.player.id, 'view']">{{ avgStat.player.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/avg-stat', avgStat.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
