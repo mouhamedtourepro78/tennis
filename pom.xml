@@ -905,7 +905,7 @@
                 <dependency>
                 <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
-                    <scope>42.5.3</scope>
+                    <scope>runtime</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.testcontainers</groupId>
@@ -1014,7 +1014,7 @@
                 <dependency>
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
-                    <scope>42.5.3</scope>
+                    <scope>runtime</scope>
                 </dependency>
             </dependencies>
             <build>
