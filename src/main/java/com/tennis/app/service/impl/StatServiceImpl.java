@@ -4,6 +4,7 @@ import com.tennis.app.domain.Stat;
 import com.tennis.app.repository.StatRepository;
 import com.tennis.app.service.StatService;
 import java.util.Optional;
+import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -45,33 +46,25 @@ public class StatServiceImpl implements StatService {
         return statRepository
             .findById(stat.getId())
             .map(existingStat -> {
-                if (stat.getAces() != null) {
-                    existingStat.setAces(stat.getAces());
-                }
-                if (stat.getDoubleFaults() != null) {
-                    existingStat.setDoubleFaults(stat.getDoubleFaults());
-                }
-                if (stat.getServicePoints() != null) {
-                    existingStat.setServicePoints(stat.getServicePoints());
-                }
-                if (stat.getFirstServeIn() != null) {
-                    existingStat.setFirstServeIn(stat.getFirstServeIn());
-                }
-                if (stat.getFirstServeWon() != null) {
-                    existingStat.setFirstServeWon(stat.getFirstServeWon());
-                }
-                if (stat.getSecondServeWon() != null) {
-                    existingStat.setSecondServeWon(stat.getSecondServeWon());
-                }
-                if (stat.getServiceGames() != null) {
-                    existingStat.setServiceGames(stat.getServiceGames());
-                }
-                if (stat.getSavedBreakPoints() != null) {
-                    existingStat.setSavedBreakPoints(stat.getSavedBreakPoints());
-                }
-                if (stat.getFacedBreakPoints() != null) {
-                    existingStat.setFacedBreakPoints(stat.getFacedBreakPoints());
-                }
+                existingStat.setAces(stat.getAces());
+
+                existingStat.setDoubleFaults(stat.getDoubleFaults());
+
+                existingStat.setServicePoints(stat.getServicePoints());
+
+                existingStat.setFirstServeIn(stat.getFirstServeIn());
+
+                existingStat.setFirstServeWon(stat.getFirstServeWon());
+
+                existingStat.setSecondServeWon(stat.getSecondServeWon());
+
+                existingStat.setServiceGames(stat.getServiceGames());
+
+                existingStat.setSavedBreakPoints(stat.getSavedBreakPoints());
+
+                existingStat.setFacedBreakPoints(stat.getFacedBreakPoints());
+
+                existingStat.setPlayer(stat.getPlayer());
 
                 return existingStat;
             })
@@ -96,5 +89,10 @@ public class StatServiceImpl implements StatService {
     public void delete(Long id) {
         log.debug("Request to delete Stat : {}", id);
         statRepository.deleteById(id);
+    }
+
+    @Override
+    public Set<Stat> findPlayerStatsByPlayerId(Long playerId) {
+        return statRepository.findPlayerStatsByPlayerId(playerId);
     }
 }

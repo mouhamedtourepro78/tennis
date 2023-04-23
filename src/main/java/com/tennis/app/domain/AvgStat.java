@@ -15,40 +15,38 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class AvgStat implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final double serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
     @Column(name = "id")
     private Long id;
 
     @Column(name = "avg_aces")
-    private Long avgAces;
+    private double avgAces;
 
     @Column(name = "avg_double_faults")
-    private Long avgDoubleFaults;
+    private double avgDoubleFaults;
 
     @Column(name = "avg_service_points")
-    private Long avgServicePoints;
+    private double avgServicePoints;
 
     @Column(name = "avg_first_serve_in")
-    private Long avgFirstServeIn;
+    private double avgFirstServeIn;
 
     @Column(name = "avg_first_serve_won")
-    private Long avgFirstServeWon;
+    private double avgFirstServeWon;
 
     @Column(name = "avg_second_serve_won")
-    private Long avgSecondServeWon;
+    private double avgSecondServeWon;
 
     @Column(name = "avg_service_games")
-    private Long avgServiceGames;
+    private double avgServiceGames;
 
     @Column(name = "avg_saved_break_points")
-    private Long avgSavedBreakPoints;
+    private double avgSavedBreakPoints;
 
     @Column(name = "avg_faced_break_points")
-    private Long avgFacedBreakPoints;
+    private double avgFacedBreakPoints;
 
     @JsonIgnoreProperties(value = { "avgStats", "wonMatchs", "lostMatchs", "stats" }, allowSetters = true)
     @OneToOne
@@ -70,120 +68,120 @@ public class AvgStat implements Serializable {
         this.id = id;
     }
 
-    public Long getAvgAces() {
+    public double getAvgAces() {
         return this.avgAces;
     }
 
-    public AvgStat avgAces(Long avgAces) {
+    public AvgStat avgAces(double avgAces) {
         this.setAvgAces(avgAces);
         return this;
     }
 
-    public void setAvgAces(Long avgAces) {
+    public void setAvgAces(double avgAces) {
         this.avgAces = avgAces;
     }
 
-    public Long getAvgDoubleFaults() {
+    public double getAvgDoubleFaults() {
         return this.avgDoubleFaults;
     }
 
-    public AvgStat avgDoubleFaults(Long avgDoubleFaults) {
+    public AvgStat avgDoubleFaults(double avgDoubleFaults) {
         this.setAvgDoubleFaults(avgDoubleFaults);
         return this;
     }
 
-    public void setAvgDoubleFaults(Long avgDoubleFaults) {
+    public void setAvgDoubleFaults(double avgDoubleFaults) {
         this.avgDoubleFaults = avgDoubleFaults;
     }
 
-    public Long getAvgServicePoints() {
+    public double getAvgServicePoints() {
         return this.avgServicePoints;
     }
 
-    public AvgStat avgServicePoints(Long avgServicePoints) {
+    public AvgStat avgServicePoints(double avgServicePoints) {
         this.setAvgServicePoints(avgServicePoints);
         return this;
     }
 
-    public void setAvgServicePoints(Long avgServicePoints) {
+    public void setAvgServicePoints(double avgServicePoints) {
         this.avgServicePoints = avgServicePoints;
     }
 
-    public Long getAvgFirstServeIn() {
+    public double getAvgFirstServeIn() {
         return this.avgFirstServeIn;
     }
 
-    public AvgStat avgFirstServeIn(Long avgFirstServeIn) {
+    public AvgStat avgFirstServeIn(double avgFirstServeIn) {
         this.setAvgFirstServeIn(avgFirstServeIn);
         return this;
     }
 
-    public void setAvgFirstServeIn(Long avgFirstServeIn) {
+    public void setAvgFirstServeIn(double avgFirstServeIn) {
         this.avgFirstServeIn = avgFirstServeIn;
     }
 
-    public Long getAvgFirstServeWon() {
+    public double getAvgFirstServeWon() {
         return this.avgFirstServeWon;
     }
 
-    public AvgStat avgFirstServeWon(Long avgFirstServeWon) {
+    public AvgStat avgFirstServeWon(double avgFirstServeWon) {
         this.setAvgFirstServeWon(avgFirstServeWon);
         return this;
     }
 
-    public void setAvgFirstServeWon(Long avgFirstServeWon) {
+    public void setAvgFirstServeWon(double avgFirstServeWon) {
         this.avgFirstServeWon = avgFirstServeWon;
     }
 
-    public Long getAvgSecondServeWon() {
+    public double getAvgSecondServeWon() {
         return this.avgSecondServeWon;
     }
 
-    public AvgStat avgSecondServeWon(Long avgSecondServeWon) {
+    public AvgStat avgSecondServeWon(double avgSecondServeWon) {
         this.setAvgSecondServeWon(avgSecondServeWon);
         return this;
     }
 
-    public void setAvgSecondServeWon(Long avgSecondServeWon) {
+    public void setAvgSecondServeWon(double avgSecondServeWon) {
         this.avgSecondServeWon = avgSecondServeWon;
     }
 
-    public Long getAvgServiceGames() {
+    public double getAvgServiceGames() {
         return this.avgServiceGames;
     }
 
-    public AvgStat avgServiceGames(Long avgServiceGames) {
+    public AvgStat avgServiceGames(double avgServiceGames) {
         this.setAvgServiceGames(avgServiceGames);
         return this;
     }
 
-    public void setAvgServiceGames(Long avgServiceGames) {
+    public void setAvgServiceGames(double avgServiceGames) {
         this.avgServiceGames = avgServiceGames;
     }
 
-    public Long getAvgSavedBreakPoints() {
+    public double getAvgSavedBreakPoints() {
         return this.avgSavedBreakPoints;
     }
 
-    public AvgStat avgSavedBreakPoints(Long avgSavedBreakPoints) {
+    public AvgStat avgSavedBreakPoints(double avgSavedBreakPoints) {
         this.setAvgSavedBreakPoints(avgSavedBreakPoints);
         return this;
     }
 
-    public void setAvgSavedBreakPoints(Long avgSavedBreakPoints) {
+    public void setAvgSavedBreakPoints(double avgSavedBreakPoints) {
         this.avgSavedBreakPoints = avgSavedBreakPoints;
     }
 
-    public Long getAvgFacedBreakPoints() {
+    public double getAvgFacedBreakPoints() {
         return this.avgFacedBreakPoints;
     }
 
-    public AvgStat avgFacedBreakPoints(Long avgFacedBreakPoints) {
+    public AvgStat avgFacedBreakPoints(double avgFacedBreakPoints) {
         this.setAvgFacedBreakPoints(avgFacedBreakPoints);
         return this;
     }
 
-    public void setAvgFacedBreakPoints(Long avgFacedBreakPoints) {
+    public void setAvgFacedBreakPoints(double avgFacedBreakPoints) {
         this.avgFacedBreakPoints = avgFacedBreakPoints;
     }
 

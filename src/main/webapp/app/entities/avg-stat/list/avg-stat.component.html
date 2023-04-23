@@ -38,24 +38,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="avgAces">
-            <div class="d-flex">
-              <span jhiTranslate="tennisApp.avgStat.avgAces">Avg Aces</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="avgDoubleFaults">
-            <div class="d-flex">
-              <span jhiTranslate="tennisApp.avgStat.avgDoubleFaults">Avg Double Faults</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="avgServicePoints">
-            <div class="d-flex">
-              <span jhiTranslate="tennisApp.avgStat.avgServicePoints">Avg Service Points</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col" jhiSortBy="avgFirstServeIn">
             <div class="d-flex">
               <span jhiTranslate="tennisApp.avgStat.avgFirstServeIn">Avg First Serve In</span>
@@ -106,9 +88,6 @@
           <td>
             <a [routerLink]="['/avg-stat', avgStat.id, 'view']">{{ avgStat.id }}</a>
           </td>
-          <td>{{ avgStat.avgAces }}</td>
-          <td>{{ avgStat.avgDoubleFaults }}</td>
-          <td>{{ avgStat.avgServicePoints }}</td>
           <td>{{ avgStat.avgFirstServeIn }}</td>
           <td>{{ avgStat.avgFirstServeWon }}</td>
           <td>{{ avgStat.avgSecondServeWon }}</td>

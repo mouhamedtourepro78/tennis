@@ -1,6 +1,7 @@
 package com.tennis.app.service;
 
 import com.tennis.app.domain.AvgStat;
+import com.tennis.app.domain.Player;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -55,4 +56,6 @@ public interface AvgStatService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    AvgStat computeAvgStatsByPlayer(Player player);
 }
