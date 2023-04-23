@@ -211,6 +211,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+          <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
@@ -898,8 +903,9 @@
                     <optional>true</optional>
                 </dependency>
                 <dependency>
-                    <groupId>org.postgresql</groupId>
+                <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
+                    <scope>42.5.3</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.testcontainers</groupId>
@@ -954,8 +960,8 @@
                                 <driver>org.postgresql.Driver</driver>
                                 <url>jdbc:postgresql://localhost:5432/tennis</url>
                                 <defaultSchemaName></defaultSchemaName>
-                                <username>tennis</username>
-                                <password></password>
+                                <username>postgres</username>
+                                <password>admin</password>
                                 <referenceUrl>hibernate:spring:com.tennis.app.domain?dialect=tech.jhipster.domain.util.FixedPostgreSQL10Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
                                 <verbose>true</verbose>
                                 <logging>debug</logging>
@@ -1008,6 +1014,7 @@
                 <dependency>
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
+                    <scope>42.5.3</scope>
                 </dependency>
             </dependencies>
             <build>
@@ -1054,8 +1061,8 @@
                                 <driver>org.postgresql.Driver</driver>
                                 <url>jdbc:postgresql://localhost:5432/tennis</url>
                                 <defaultSchemaName></defaultSchemaName>
-                                <username>tennis</username>
-                                <password></password>
+                                <username>postgres</username>
+                                <password>admin</password>
                                 <referenceUrl>hibernate:spring:com.tennis.app.domain?dialect=tech.jhipster.domain.util.FixedPostgreSQL10Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
                                 <verbose>true</verbose>
                                 <logging>debug</logging>

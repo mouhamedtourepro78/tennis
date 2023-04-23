@@ -2,6 +2,7 @@ package com.tennis.app;
 
 import com.tennis.app.config.ApplicationProperties;
 import com.tennis.app.config.CRLFLogConverter;
+import com.tennis.app.service.DataSavingService;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
@@ -11,6 +12,8 @@ import javax.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
@@ -21,14 +24,19 @@ import tech.jhipster.config.JHipsterConstants;
 
 @SpringBootApplication
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
-public class TennisApp {
+public class TennisApp implements ApplicationRunner {
 
     private static final Logger log = LoggerFactory.getLogger(TennisApp.class);
 
     private final Environment env;
 
-    public TennisApp(Environment env) {
+    private DataSavingService dataSavingService;
+
+    private static final String FILENAME = "atp_matches_2023.csv";
+
+    public TennisApp(Environment env, DataSavingService dataSavingService) {
         this.env = env;
+        this.dataSavingService = dataSavingService;
     }
 
     /**
@@ -101,5 +109,10 @@ public class TennisApp {
             contextPath,
             env.getActiveProfiles().length == 0 ? env.getDefaultProfiles() : env.getActiveProfiles()
         );
+    }
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        dataSavingService.parseCsvToMatchs(FILENAME);
     }
 }

@@ -18,8 +18,6 @@ public class Stat implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
     @Column(name = "id")
     private Long id;
 
@@ -50,7 +48,7 @@ public class Stat implements Serializable {
     @Column(name = "faced_break_points")
     private Long facedBreakPoints;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "avgStats", "wonMatchs", "lostMatchs", "stats" }, allowSetters = true)
     private Player player;
 

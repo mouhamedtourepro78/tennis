@@ -4,6 +4,7 @@ import com.tennis.app.domain.Match;
 import com.tennis.app.repository.MatchRepository;
 import com.tennis.app.service.MatchService;
 import java.util.Optional;
+import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -84,5 +85,15 @@ public class MatchServiceImpl implements MatchService {
     public void delete(Long id) {
         log.debug("Request to delete Match : {}", id);
         matchRepository.deleteById(id);
+    }
+
+    @Override
+    public Set<Match> findAllWonMatchsByPlayerId(Long playerId) {
+        return matchRepository.findAllWonMatchsByPlayerId(playerId);
+    }
+
+    @Override
+    public Set<Match> findAllLostMatchsByPlayerId(Long playerId) {
+        return matchRepository.findAllLostMatchsByPlayerId(playerId);
     }
 }

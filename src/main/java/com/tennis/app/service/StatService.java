@@ -2,6 +2,7 @@ package com.tennis.app.service;
 
 import com.tennis.app.domain.Stat;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -55,4 +56,6 @@ public interface StatService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    Set<Stat> findPlayerStatsByPlayerId(Long playerId);
 }
