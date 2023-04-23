@@ -60,6 +60,7 @@ public class DataSavingServiceImpl implements DataSavingService {
         this.playerRepository = playerRepository;
     }
 
+    @Transactional
     @Override
     public void parseCsvToMatchs(String fileName) throws IOException, CsvException, NumberFormatException {
         CSVParser csvParser = new CSVParserBuilder().withSeparator(';').build(); // custom separator
