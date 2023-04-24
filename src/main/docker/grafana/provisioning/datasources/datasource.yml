@@ -20,7 +20,7 @@ datasources:
     # On MacOS, replace localhost by host.docker.internal
     url: http://localhost:9090
     # <string> database password, if used
-    password:
+    password: admin
     # <string> database user, if used
     user:
     # <string> database name, if used
