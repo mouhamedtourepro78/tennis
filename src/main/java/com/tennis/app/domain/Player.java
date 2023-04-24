@@ -20,7 +20,7 @@ public class Player implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", unique = true, updatable = false)
     private Long id;
 
     @Column(name = "name")
@@ -42,17 +42,17 @@ public class Player implements Serializable {
     @OneToOne(mappedBy = "player")
     private AvgStat avgStats;
 
-    @OneToMany(mappedBy = "winner")
+    @OneToMany(mappedBy = "winner", cascade = CascadeType.MERGE)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "winner", "loser", "tournament" }, allowSetters = true)
     private Set<Match> wonMatchs = new HashSet<>();
 
-    @OneToMany(mappedBy = "loser")
+    @OneToMany(mappedBy = "loser", cascade = CascadeType.MERGE)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "winner", "loser", "tournament" }, allowSetters = true)
     private Set<Match> lostMatchs = new HashSet<>();
 
-    @OneToMany(mappedBy = "player")
+    @OneToMany(mappedBy = "player", cascade = CascadeType.MERGE)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "player" }, allowSetters = true)
     private Set<Stat> stats = new HashSet<>();

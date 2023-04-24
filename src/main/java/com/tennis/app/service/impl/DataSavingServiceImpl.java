@@ -22,62 +22,45 @@ import com.tennis.app.service.PlayerService;
 import com.tennis.app.service.StatService;
 import com.tennis.app.service.TournamentService;
 import java.io.*;
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import org.aspectj.weaver.loadtime.Agent;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class DataSavingServiceImpl implements DataSavingService {
 
     private final StatService statService;
     private final MatchService matchService;
     private final MatchRepository matchRepository;
-    private final PlayerRepository playerRepository;
-    private final PlayerService playerService;
     private final StatRepository statRepository;
-    private final TournamentService tournamentService;
-    private final TournamentRepository tournamentRepository;
-    AvgStatService avgStatService;
-    AvgStatRepository avgStatRepository;
+    private final PlayerRepository playerRepository;
+    private final AvgStatService avgStatService;
+    private final AvgStatRepository avgStatRepository;
 
     public DataSavingServiceImpl(
         final MatchRepository matchRepository,
-        @Lazy final MatchService matchService,
-        final PlayerRepository playerRepository,
-        @Lazy final StatService statService,
-        @Lazy final PlayerService playerService,
+        final MatchService matchService,
+        final StatService statService,
         final StatRepository statRepository,
-        @Lazy final TournamentService tournamentService,
-        final TournamentRepository tournamentRepository,
         final AvgStatService avgStatService,
-        AvgStatRepository avgStatRepository
+        final AvgStatRepository avgStatRepository,
+        final PlayerRepository playerRepository
     ) {
         this.statRepository = statRepository;
         this.statService = statService;
         this.matchService = matchService;
         this.matchRepository = matchRepository;
-        this.playerRepository = playerRepository;
-        this.tournamentRepository = tournamentRepository;
-        this.playerService = playerService;
-        this.tournamentService = tournamentService;
         this.avgStatService = avgStatService;
         this.avgStatRepository = avgStatRepository;
+        this.playerRepository = playerRepository;
     }
 
+    @Transactional
     @Override
     public void parseCsvToMatchs(String fileName) throws IOException, CsvException, NumberFormatException {
         CSVParser csvParser = new CSVParserBuilder().withSeparator(';').build(); // custom separator
@@ -160,8 +143,12 @@ public class DataSavingServiceImpl implements DataSavingService {
 
             loser.setAge(dataLine[23].equals("") ? 0 : Double.valueOf(dataLine[23]));
 
-            loser.setWonMatchs(matchService.findAllWonMatchsByPlayerId(loser.getId()));
-            loser.setLostMatchs(matchService.findAllLostMatchsByPlayerId(loser.getId()));
+            if (playerRepository.findById(winner.getId()) == null) loser.setWonMatchs(
+                matchService.findAllWonMatchsByPlayerId(loser.getId())
+            );
+            if (playerRepository.findById(loser.getId()) == null) loser.setLostMatchs(
+                matchService.findAllLostMatchsByPlayerId(loser.getId())
+            );
 
             Long loserAces = dataLine[37].equals("") ? 0 : Long.valueOf(dataLine[37]);
             loserStat.setAces(loserAces);
@@ -194,8 +181,9 @@ public class DataSavingServiceImpl implements DataSavingService {
             match.setMatchRound(dataLine[26]);
             match.setMinutes(dataLine[27].equals("") ? 0 : Long.valueOf(dataLine[27]));
 
-            winner.setStats(statService.findPlayerStatsByPlayerId(winner.getId()));
-            loser.setStats(statService.findPlayerStatsByPlayerId(loser.getId()));
+            if (playerRepository.findById(winner.getId()) == null) winner.setStats(statService.findPlayerStatsByPlayerId(winner.getId()));
+
+            if (playerRepository.findById(loser.getId()) == null) loser.setStats(statService.findPlayerStatsByPlayerId(loser.getId()));
 
             winnerStat.setPlayer(winner);
             loserStat.setPlayer(loser);
