@@ -22,7 +22,6 @@ import com.tennis.app.service.PlayerService;
 import com.tennis.app.service.StatService;
 import com.tennis.app.service.TournamentService;
 import java.io.*;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -64,11 +63,8 @@ public class DataSavingServiceImpl implements DataSavingService {
     @Transactional
     @Override
     public void parseCsvToMatchs(String fileName) throws IOException, CsvException, NumberFormatException {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource(fileName).getFile());
-        FileReader fileReader = new FileReader(file, StandardCharsets.UTF_8);
         CSVParser csvParser = new CSVParserBuilder().withSeparator(';').build(); // custom separator
-        CSVReader csvReader = new CSVReaderBuilder(fileReader)
+        CSVReader csvReader = new CSVReaderBuilder(new FileReader(fileName, StandardCharsets.UTF_8))
             .withCSVParser(csvParser) // custom CSV parser
             .withSkipLines(0) // skip the first line, header info
             .build();
